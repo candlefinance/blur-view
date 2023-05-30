@@ -2,6 +2,8 @@
 
 @interface RCT_EXTERN_MODULE(BlurViewViewManager, RCTViewManager)
 
-RCT_EXPORT_VIEW_PROPERTY(color, NSString)
+RCT_EXPORT_VIEW_PROPERTY(gradientMask, NSString)
+RCT_EXPORT_VIEW_PROPERTY(maxBlurRadius, NSNumber)
+RCT_EXPORT_VIEW_PROPERTY(filterType, NSString)
 
 @end

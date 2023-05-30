@@ -1,36 +1,63 @@
 @objc(BlurViewViewManager)
 class BlurViewViewManager: RCTViewManager {
-
-  override func view() -> (BlurViewView) {
-    return BlurViewView()
-  }
-
-  @objc override static func requiresMainQueueSetup() -> Bool {
-    return false
-  }
+    
+    override func view() -> (BlurViewView) {
+        return BlurViewView()
+    }
+    
+    @objc override static func requiresMainQueueSetup() -> Bool {
+        return true
+    }
 }
 
 class BlurViewView : UIView {
-
-  @objc var color: String = "" {
-    didSet {
-      self.backgroundColor = hexStringToUIColor(hexColor: color)
+    
+    var gradientMaskImage: UIImage = VariableBlurViewConstants.defaultGradientMask
+    var _maxBlurRadius: CGFloat = 20
+    
+    @objc var filterType: String = "variableBlur"
+    @objc var gradientMask: String = "" {
+        didSet {
+            if
+                let data = Data(base64Encoded: gradientMask, options: .ignoreUnknownCharacters),
+                let image = UIImage(data: data)
+            {
+                gradientMaskImage = image
+            } else {
+                print("[VariableBlurView] Couldn't create the gradient mask image.")
+                gradientMaskImage = UIImage(systemName: "xmark")!
+            }
+        }
     }
-  }
-
-  func hexStringToUIColor(hexColor: String) -> UIColor {
-    let stringScanner = Scanner(string: hexColor)
-
-    if(hexColor.hasPrefix("#")) {
-      stringScanner.scanLocation = 1
+    
+    @objc var maxBlurRadius: NSNumber = 20 {
+        didSet {
+            self._maxBlurRadius = CGFloat(truncating: maxBlurRadius)
+        }
     }
-    var color: UInt32 = 0
-    stringScanner.scanHexInt32(&color)
-
-    let r = CGFloat(Int(color >> 16) & 0x000000FF)
-    let g = CGFloat(Int(color >> 8) & 0x000000FF)
-    let b = CGFloat(Int(color) & 0x000000FF)
-
-    return UIColor(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: 1)
-  }
+    
+    lazy var blurView = VariableBlurUIView(
+        gradientMask: gradientMaskImage,
+        maxBlurRadius: _maxBlurRadius,
+        filterType: filterType
+    )
+    
+    init() {
+        super.init(frame: CGRect.zero)
+        
+        addSubview(blurView)
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            blurView.topAnchor.constraint(equalTo: topAnchor),
+            blurView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            blurView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            blurView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }

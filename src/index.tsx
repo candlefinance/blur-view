@@ -12,8 +12,10 @@ const LINKING_ERROR =
   '- You are not using Expo Go\n';
 
 type BlurViewProps = {
-  color: string;
   style: ViewStyle;
+  gradientMask?: string;
+  maxBlurRadius?: number;
+  filterType?: string;
 };
 
 const ComponentName = 'BlurViewView';

@@ -1,25 +1,40 @@
 import * as React from 'react';
 
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, Dimensions, Image, StyleSheet } from 'react-native';
 import { BlurViewView } from '@candlefinance/blur-view';
+// @ts-ignore
+import MyImage from '../images/deepmind.jpg';
+// @ts-ignore
+import MyImage2 from '../images/deepmind2.jpg';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <BlurViewView color="#32a852" style={styles.box} />
-    </View>
+    <>
+      <ScrollView pagingEnabled>
+        <Image source={MyImage} style={styles.image} />
+        <Image source={MyImage2} style={styles.image} />
+      </ScrollView>
+      <BlurViewView style={styles.top} />
+      <BlurViewView style={styles.bottom} />
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+  image: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
   },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
+  top: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height * 0.2,
+    position: 'absolute',
+  },
+  bottom: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height * 0.2,
+    position: 'absolute',
+    bottom: 0,
+    transform: [{ rotate: '180deg' }],
   },
 });
