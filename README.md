@@ -6,7 +6,7 @@ Variable Blur View for React Native. Inspired by [@jtrivedi](https://github.com/
 
 ## Preview
 
-[![Watch the video](https://github.com/candlefinance/dino/assets/12258850/13604ce8-2295-46ac-b1fd-411940d99b53)](https://github.com/candlefinance/blur-view/assets/12258850/2956ae3c-41d7-42b7-829f-abeded2c570c)
+https://github.com/candlefinance/blur-view/assets/12258850/53f5a05f-7594-4f7e-acbc-997b10ee4345
 
 ## Installation
 
