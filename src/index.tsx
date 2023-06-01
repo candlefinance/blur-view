@@ -15,12 +15,11 @@ type BlurViewProps = {
   style: ViewStyle;
   gradientMask?: string;
   maxBlurRadius?: number;
-  filterType?: string;
 };
 
 const ComponentName = 'BlurViewView';
 
-export const BlurViewView =
+export const VariableBlurView =
   UIManager.getViewManagerConfig(ComponentName) != null
     ? requireNativeComponent<BlurViewProps>(ComponentName)
     : () => {

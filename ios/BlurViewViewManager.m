@@ -4,6 +4,5 @@
 
 RCT_EXPORT_VIEW_PROPERTY(gradientMask, NSString)
 RCT_EXPORT_VIEW_PROPERTY(maxBlurRadius, NSNumber)
-RCT_EXPORT_VIEW_PROPERTY(filterType, NSString)
 
 @end

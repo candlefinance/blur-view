@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { ScrollView, Dimensions, Image, StyleSheet } from 'react-native';
-import { BlurViewView } from '@candlefinance/blur-view';
+import { VariableBlurView } from '@candlefinance/blur-view';
 // @ts-ignore
 import MyImage from '../images/deepmind.jpg';
 // @ts-ignore
@@ -14,8 +14,8 @@ export default function App() {
         <Image source={MyImage} style={styles.image} />
         <Image source={MyImage2} style={styles.image} />
       </ScrollView>
-      <BlurViewView style={styles.top} />
-      <BlurViewView style={styles.bottom} />
+      <VariableBlurView maxBlurRadius={10} style={styles.top} />
+      <VariableBlurView style={styles.bottom} />
     </>
   );
 }
