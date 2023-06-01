@@ -13,32 +13,33 @@ class BlurViewViewManager: RCTViewManager {
 class BlurViewView : UIView {
     
     var gradientMaskImage: UIImage = VariableBlurViewConstants.defaultGradientMask
-    var _maxBlurRadius: CGFloat = 20
     
-    @objc var filterType: String = "variableBlur"
+    private let filterType: String = "variableBlur"
     @objc var gradientMask: String = "" {
         didSet {
             if
                 let data = Data(base64Encoded: gradientMask, options: .ignoreUnknownCharacters),
                 let image = UIImage(data: data)
             {
-                gradientMaskImage = image
+                self.gradientMaskImage = image
+                blurView.update(gradientMask: image, maxBlurRadius: CGFloat(truncating: maxBlurRadius), filterType: filterType)
             } else {
                 print("[VariableBlurView] Couldn't create the gradient mask image.")
-                gradientMaskImage = UIImage(systemName: "xmark")!
+                let image = UIImage(systemName: "xmark")!
+                blurView.update(gradientMask: image, maxBlurRadius: CGFloat(truncating: maxBlurRadius), filterType: filterType)
             }
         }
     }
     
     @objc var maxBlurRadius: NSNumber = 20 {
         didSet {
-            self._maxBlurRadius = CGFloat(truncating: maxBlurRadius)
+            blurView.update(gradientMask: gradientMaskImage, maxBlurRadius: maxBlurRadius.doubleValue, filterType: filterType)
         }
     }
     
     lazy var blurView = VariableBlurUIView(
-        gradientMask: gradientMaskImage,
-        maxBlurRadius: _maxBlurRadius,
+        gradientMask: VariableBlurViewConstants.defaultGradientMask,
+        maxBlurRadius: maxBlurRadius.doubleValue,
         filterType: filterType
     )
     

@@ -30,6 +30,15 @@ import { BlurViewView } from '@candlefinance/blur-view';
 />;
 ```
 
+## Docs
+
+View the example app in the [example](./example/src/App.tsx) folder.
+
+| Property        | Type     | Default                                 | Description                                       |
+| --------------- | -------- | --------------------------------------- | ------------------------------------------------- |
+| `maxBlurRadius` | `number` | `20`                                    | The amount of blur to apply to the view.          |
+| `gradientMask`  | `string` | see [source](./ios/images/Gradient.png) | The gradient mask to apply to the view in base64. |
+
 ## Contributing
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.

@@ -28,8 +28,6 @@
 //  OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 //  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import SwiftUI
-
 /// A variable blur view.
 public class VariableBlurUIView: UIVisualEffectView {
     public init(
@@ -39,6 +37,14 @@ public class VariableBlurUIView: UIVisualEffectView {
     ) {
         super.init(effect: UIBlurEffect(style: .regular))
 
+        update(gradientMask: gradientMask, maxBlurRadius: maxBlurRadius, filterType: filterType)
+    }
+    
+    public func update(
+        gradientMask: UIImage,
+        maxBlurRadius: CGFloat = 20,
+        filterType: String = "variableBlur"
+    ) {
         /// This is a private QuartzCore class, encoded in base64.
         ///
         ///             CAFilter
@@ -127,35 +133,6 @@ public class VariableBlurUIView: UIVisualEffectView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
-
-/// A variable blur view.
-public struct VariableBlurView: UIViewRepresentable {
-    public var gradientMask: UIImage
-    public var maxBlurRadius: CGFloat
-    public var filterType: String
-
-    /// A variable blur view.
-    public init(
-        gradientMask: UIImage = VariableBlurViewConstants.defaultGradientMask,
-        maxBlurRadius: CGFloat = 20,
-        filterType: String = "variableBlur"
-    ) {
-        self.gradientMask = gradientMask
-        self.maxBlurRadius = maxBlurRadius
-        self.filterType = filterType
-    }
-
-    public func makeUIView(context: Context) -> VariableBlurUIView {
-        let view = VariableBlurUIView(
-            gradientMask: gradientMask,
-            maxBlurRadius: maxBlurRadius,
-            filterType: filterType
-        )
-        return view
-    }
-
-    public func updateUIView(_ uiView: VariableBlurUIView, context: Context) {}
 }
 
 public enum VariableBlurViewConstants {
