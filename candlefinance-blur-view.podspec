@@ -15,9 +15,9 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/candlefinance/blur-view.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,mm,swift}"
-  s.resources = "ios/images/*.{png,jpeg,jpg,storyboard,xib,xcassets,ttf,otf,plist}"  
 
   s.dependency "React-Core"
+  s.dependency "VisualEffectView"
 
   # Don't install the dependencies when we run `pod install` in the old architecture.
   if ENV['RCT_NEW_ARCH_ENABLED'] == '1' then
