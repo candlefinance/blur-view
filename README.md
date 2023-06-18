@@ -2,11 +2,11 @@
 
 # BlurView for React Native (iOS only)
 
-BlurView for React Native (iOS only). Supports variable intensity and tint color via [UIVisualEffectView](https://developer.apple.com/documentation/uikit/uivisualeffectview)
+BlurView for React Native. Supports variable intensity and tint color via [UIVisualEffectView](https://developer.apple.com/documentation/uikit/uivisualeffectview).
 
 ## Preview
 
-https://github.com/candlefinance/blur-view/assets/12258850/53f5a05f-7594-4f7e-acbc-997b10ee4345
+https://github.com/candlefinance/blur-view/assets/12258850/66fc73aa-7160-41b2-97cd-a406440e372e
 
 ## Installation
 
@@ -27,6 +27,28 @@ import { BlurView } from '@candlefinance/blur-view';
   blurRadius={10}
   style={styles.top}
 />;
+```
+
+To use with [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated), wrap the BlurView in a `Animated.createAnimatedComponent`.
+
+```js
+import { BlurView } from '@candlefinance/blur-view';
+const AnimatedBlur = Animated.createAnimatedComponent(BlurView);
+
+const animatedProps = useAnimatedProps(() => {
+  const blurRadius = interpolate(
+    scrollY.value,
+    input,
+    output,
+    Extrapolate.CLAMP
+  );
+
+  return {
+    blurRadius,
+  };
+});
+
+<AnimatedBlur animatedProps={animatedProps} />;
 ```
 
 ## Docs
