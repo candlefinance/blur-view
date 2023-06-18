@@ -7,6 +7,7 @@ type BlurViewProps = {
   blurEnabled?: boolean;
   colorTintOpacity?: number;
   scale?: number;
+  children?: React.ReactNode;
 };
 
 const ComponentName = 'BlurViewView';
