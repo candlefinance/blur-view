@@ -1,10 +1,11 @@
+import * as React from 'react'
 import { View } from 'react-native'
 import type * as native from './index'
 
 type Props = ComponentProps<typeof native['BlurView']>
 
 // reanimated doesn't support function components
-export class BlurView {
+export class BlurView extends React.Component<Props> {
   render() {
     const { style, blurRadius, blurEnabled = true, blurTintColor, scale, colorTintOpacity, ...props } = this.props
     // TODO test a good algorithm for standardizing blur() radius
