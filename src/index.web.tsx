@@ -2,7 +2,7 @@ import * as React from 'react'
 import { View } from 'react-native'
 import type * as native from './index'
 
-type Props = ComponentProps<typeof native['BlurView']>
+type Props = React.ComponentProps<typeof native['BlurView']>
 
 // reanimated doesn't support function components
 export class BlurView extends React.Component<Props> {
