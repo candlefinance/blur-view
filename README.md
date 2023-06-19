@@ -22,7 +22,7 @@ Use the `BlurView` component to blur the content behind it.
 import { BlurView } from '@candlefinance/blur-view';
 
 <BlurView
-  blurTintColor="#ff0067"
+  blurTintColor="#ff006780" // has to be hex with opacity
   colorTintOpacity={0.2}
   blurRadius={10}
   style={styles.top}
