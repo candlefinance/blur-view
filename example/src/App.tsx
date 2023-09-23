@@ -16,11 +16,11 @@ export default function App() {
       </ScrollView>
       <BlurView
         colorTintOpacity={0.5}
-        blurTintColor="#ff0067"
-        blurRadius={20}
+        blurTintColor="#ffffff"
+        blurRadius={90}
         style={styles.top}
       />
-      <BlurView blurRadius={10} style={styles.bottom} />
+      <BlurView blurRadius={5} style={styles.bottom} />
     </>
   );
 }
@@ -40,6 +40,5 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height * 0.2,
     position: 'absolute',
     bottom: 0,
-    transform: [{ rotate: '180deg' }],
   },
 });
