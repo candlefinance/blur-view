@@ -20,13 +20,17 @@ class BlurViewViewManager : SimpleViewManager<BlurView>() {
     val blurView = BlurView(reactContext.baseContext).also {
       it.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
       val decorView = reactContext.currentActivity
-      val rootView = decorView?.findViewById(android.R.id.content) as ViewGroup
+      val rootView = decorView?.findViewById<ViewGroup>(android.R.id.content)
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-        it.setupWith(rootView, RenderEffectBlur())
-          .setFrameClearDrawable(it.background)
+        if (rootView != null) {
+          it.setupWith(rootView, RenderEffectBlur())
+            .setFrameClearDrawable(it.background)
+        }
       } else {
-        it.setupWith(rootView, RenderScriptBlur(reactContext.baseContext))
-          .setFrameClearDrawable(it.background)
+        if (rootView != null) {
+          it.setupWith(rootView, RenderScriptBlur(reactContext.baseContext))
+            .setFrameClearDrawable(it.background)
+        }
       }
     }
     return blurView
