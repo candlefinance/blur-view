@@ -1,7 +1,6 @@
 package com.candlefinance.blurview
 
 import android.os.Build
-import android.view.View
 import android.view.ViewGroup
 import com.facebook.react.uimanager.SimpleViewManager
 import com.facebook.react.uimanager.ThemedReactContext
@@ -20,7 +19,7 @@ class BlurViewViewManager : SimpleViewManager<BlurView>() {
     val blurView = BlurView(reactContext.baseContext).also {
       it.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
       val decorView = reactContext.currentActivity
-      val rootView = decorView?.findViewById<ViewGroup>(android.R.id.content)
+      val rootView = decorView?.findViewById<BlurView>(R.id.blurView)
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
         if (rootView != null) {
           it.setupWith(rootView, RenderEffectBlur())
