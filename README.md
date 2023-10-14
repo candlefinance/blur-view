@@ -1,6 +1,6 @@
 [![npm version](https://badge.fury.io/js/%40candlefinance%2Fblur-view.svg)](https://badge.fury.io/js/%40candlefinance%2Fblur-view)[![npm downloads](https://img.shields.io/npm/dm/%40candlefinance%2Fblur-view.svg)](https://npm.im/%40candlefinance%2Fblur-view)
 
-# BlurView for React Native (iOS only)
+# BlurView for React Native (iOS & Android)
 
 BlurView for React Native. Supports variable intensity and tint color via [UIVisualEffectView](https://developer.apple.com/documentation/uikit/uivisualeffectview).
 
@@ -55,13 +55,13 @@ const animatedProps = useAnimatedProps(() => {
 
 View the example app in the [example](./example/src/App.tsx) folder.
 
-| Property           | Type     | Default   | Description                              |
-| ------------------ | -------- | --------- | ---------------------------------------- |
-| `blurRadius`       | `number` | 0         | The amount of blur to apply to the view. |
-| `blurTintColor`    | `string` | undefined | Apply a tint color to the blur           |
-| `blurEnabled`      | `bool`   | undefined | Hide blur                                |
-| `colorTintOpacity` | `number` | undefined | Opacity of the color                     |
-| `scale`            | `number` | undefined | scale factor of blur                     |
+| Property            | Type     | Default   | Description                              |
+| ------------------- | -------- | --------- | ---------------------------------------- |
+| `blurRadius`        | `number` | 0         | The amount of blur to apply to the view. |
+| `blurTintColor`     | `string` | undefined | Apply a tint color to the blur           |
+| `blurEnabled` (iOS) | `bool`   | undefined | Hide blur                                |
+| `colorTintOpacity`  | `number` | undefined | Opacity of the color (iOS)               |
+| `scale`             | `number` | undefined | scale factor of blur                     |
 
 ## Contributing
 
